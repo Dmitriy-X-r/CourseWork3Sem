@@ -23,11 +23,7 @@ namespace CourseWork3Sem
 
         public void SaveToDB<T>(List<T> obj)
         {
-            List<T> allCurrenObjects = ReadAllFromDB<T>();
-
-            allCurrenObjects.AddRange(obj);
-
-            string serializedObject = JsonConvert.SerializeObject(allCurrenObjects);
+            string serializedObject = JsonConvert.SerializeObject(obj);
 
             File.WriteAllText(DBFilepath, serializedObject);
         }
@@ -52,9 +48,18 @@ namespace CourseWork3Sem
         {
             string json = File.ReadAllText(DBFilepath);
             List<T> currentObjects = JsonConvert.DeserializeObject<List<T>>(json);
-            currentObjects.Sort();
+            //if (currentObjects != null)
+            //    currentObjects.Sort();
+            //if (currentObjects == null)
+            //    throw new Exception("Пустой список");
+
+            //currentObjects = Sort(currentObjects);
+
             return currentObjects ?? new List<T>();
         }
+
+        private List<Book> Sort(List<Book> books) => books.OrderBy(o => o.NameBook).ToList();
+        private List<Debtor> Sort(List<Debtor> debtor) => debtor.OrderBy(o => o.reader.FullName).ToList();
 
     }
 }

@@ -107,27 +107,39 @@ namespace CourseWork3Sem
             openFileDialog.InitialDirectory = @"C:";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                List<Book> externalBooks;
+
                 try
                 {
                     DB.OpenOrCreatFile(openFileDialog.FileName);
-                    List<Book> books = DB.ReadAllFromDB<Book>();
-                    if (books.Count == 0)
-                        MessageBox.Show("Пустой файл");
-
-                    DB.OpenOrCreatFile(DB.GetFileNameForAllBooks());
-                    DB.SaveToDB<Book>(books);
-
-                    DB.OpenOrCreatFile(DB.GetFileNameForAvailableBooks());
-                    DB.SaveToDB<Book>(books);
-
-                    foreach (var book in books)
-                        listBoxBookList.Items.Add(book);
+                    externalBooks = DB.ReadAllFromDB<Book>();
                 }
-                catch
+                catch(Exception ex)
                 {
-                    MessageBox.Show("Некорректные данные в файле");
+                    MessageBox.Show("Некорректные данные в файле" + ex.Message); 
+                    return;
                 }
-                
+
+                if (externalBooks.Count == 0)
+                {
+                    MessageBox.Show("Пустой файл");
+                    return;
+                }
+
+                DB.OpenOrCreatFile(DB.GetFileNameForAllBooks());
+                List<Book> allBooks = DB.ReadAllFromDB<Book>();
+                allBooks.AddRange(externalBooks);
+
+                DB.SaveToDB<Book>(allBooks);
+
+                DB.OpenOrCreatFile(DB.GetFileNameForAvailableBooks());
+                List<Book> availableBooks = DB.ReadAllFromDB<Book>();
+                availableBooks.AddRange(externalBooks);
+
+                DB.SaveToDB<Book>(availableBooks);
+
+                foreach (var book in externalBooks)
+                    listBoxBookList.Items.Add(book);
             }
         }
     }
