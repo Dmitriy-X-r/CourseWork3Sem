@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CourseWork3Sem
@@ -30,7 +26,8 @@ namespace CourseWork3Sem
             listBoxBookList.ScrollAlwaysVisible = true;
 
             List<Book> books = DB.ReadAllFromDB<Book>();
-            //books.Sort();
+            if(books != null)
+                books.Sort();
 
             if (books.Count == 0)
                 listBoxBookList.Items.Add("Книг нет в наличии!");

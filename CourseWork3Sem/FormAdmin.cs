@@ -23,6 +23,8 @@ namespace CourseWork3Sem
 
             WorkingWithDB.IsAdmin = true;
             List<Debtor> debtors = DB.ReadAllFromDB<Debtor>();
+            if(debtors != null)
+                debtors.Sort();
 
             if(debtors.Count == 0)
                 listBoxDebtors.Items.Add("Нет должников");
@@ -33,8 +35,8 @@ namespace CourseWork3Sem
             DB.OpenOrCreatFile(filePath);
 
             List<Book> books = DB.ReadAllFromDB<Book>();
-            //Book[] booksCopy = books.ToArray();
-            //List<Book>.Sort(books);           
+            if(books != null)
+                books.Sort();           
 
             if (books.Count == 0)
                 listBoxBookList.Items.Add("Беда, нет книг!");
@@ -107,24 +109,32 @@ namespace CourseWork3Sem
             openFileDialog.InitialDirectory = @"C:";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                List<Book> externalBooks;
 
+                List<Book> externalBooks;
                 try
                 {
                     DB.OpenOrCreatFile(openFileDialog.FileName);
                     externalBooks = DB.ReadAllFromDB<Book>();
                 }
-                catch(Exception ex)
+                catch
                 {
-                    MessageBox.Show("Некорректные данные в файле" + ex.Message); 
+                    MessageBox.Show("Некорректные данные в файле");
                     return;
                 }
-
+                
+                if (externalBooks[0].NameBook == null || externalBooks[0].Author == null)
+                {
+                    MessageBox.Show("Некорректные данные в файле");
+                    return;
+                }
+             
                 if (externalBooks.Count == 0)
                 {
                     MessageBox.Show("Пустой файл");
                     return;
                 }
+
+                DB.DeletFile(openFileDialog.FileName);
 
                 DB.OpenOrCreatFile(DB.GetFileNameForAllBooks());
                 List<Book> allBooks = DB.ReadAllFromDB<Book>();

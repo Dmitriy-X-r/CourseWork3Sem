@@ -8,8 +8,8 @@ namespace CourseWork3Sem
 {
     class Book : IComparable
     {
-        public string NameBook { get; set; }
-        public string Author { get; set; }
+        public string NameBook { get; private set; }
+        public string Author { get; private set; }
 
         public Book(string nameBook, string author)
         {

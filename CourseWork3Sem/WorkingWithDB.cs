@@ -43,23 +43,17 @@ namespace CourseWork3Sem
                 return false;
             }
         }
+        public void DeletFile(string filePath)
+        {
+            File.Delete(filePath);
+        }
 
         public List<T> ReadAllFromDB<T>()
         {
             string json = File.ReadAllText(DBFilepath);
             List<T> currentObjects = JsonConvert.DeserializeObject<List<T>>(json);
-            //if (currentObjects != null)
-            //    currentObjects.Sort();
-            //if (currentObjects == null)
-            //    throw new Exception("Пустой список");
-
-            //currentObjects = Sort(currentObjects);
-
             return currentObjects ?? new List<T>();
         }
-
-        private List<Book> Sort(List<Book> books) => books.OrderBy(o => o.NameBook).ToList();
-        private List<Debtor> Sort(List<Debtor> debtor) => debtor.OrderBy(o => o.reader.FullName).ToList();
 
     }
 }

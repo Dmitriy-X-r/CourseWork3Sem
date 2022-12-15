@@ -30,12 +30,10 @@
         {
             this.listBoxBookList = new System.Windows.Forms.ListBox();
             this.btnAddBooksFromFile = new System.Windows.Forms.Button();
-            this.txtForFile = new System.Windows.Forms.TextBox();
             this.listBoxDebtors = new System.Windows.Forms.ListBox();
             this.btnReturnBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtBookName = new System.Windows.Forms.TextBox();
             this.txtAuthor = new System.Windows.Forms.TextBox();
             this.btnAddBook = new System.Windows.Forms.Button();
@@ -54,20 +52,13 @@
             // 
             // btnAddBooksFromFile
             // 
-            this.btnAddBooksFromFile.Location = new System.Drawing.Point(58, 447);
+            this.btnAddBooksFromFile.Location = new System.Drawing.Point(65, 420);
             this.btnAddBooksFromFile.Name = "btnAddBooksFromFile";
-            this.btnAddBooksFromFile.Size = new System.Drawing.Size(138, 29);
+            this.btnAddBooksFromFile.Size = new System.Drawing.Size(219, 46);
             this.btnAddBooksFromFile.TabIndex = 1;
-            this.btnAddBooksFromFile.Text = "Добавить книгу";
+            this.btnAddBooksFromFile.Text = "Загрузить книги из файла";
             this.btnAddBooksFromFile.UseVisualStyleBackColor = true;
             this.btnAddBooksFromFile.Click += new System.EventHandler(this.btnAddBooksFromFile_Click);
-            // 
-            // txtForFile
-            // 
-            this.txtForFile.Location = new System.Drawing.Point(36, 409);
-            this.txtForFile.Name = "txtForFile";
-            this.txtForFile.Size = new System.Drawing.Size(171, 22);
-            this.txtForFile.TabIndex = 2;
             // 
             // listBoxDebtors
             // 
@@ -106,15 +97,6 @@
             this.label2.Size = new System.Drawing.Size(180, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Список книг в библиотеке";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(243, 412);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 17);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "- Выбрать файл";
             // 
             // txtBookName
             // 
@@ -168,12 +150,10 @@
             this.Controls.Add(this.btnAddBook);
             this.Controls.Add(this.txtAuthor);
             this.Controls.Add(this.txtBookName);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnReturnBack);
             this.Controls.Add(this.listBoxDebtors);
-            this.Controls.Add(this.txtForFile);
             this.Controls.Add(this.btnAddBooksFromFile);
             this.Controls.Add(this.listBoxBookList);
             this.Name = "FormAdmin";
@@ -188,12 +168,10 @@
 
         private System.Windows.Forms.ListBox listBoxBookList;
         private System.Windows.Forms.Button btnAddBooksFromFile;
-        private System.Windows.Forms.TextBox txtForFile;
         private System.Windows.Forms.ListBox listBoxDebtors;
         private System.Windows.Forms.Button btnReturnBack;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtBookName;
         private System.Windows.Forms.TextBox txtAuthor;
         private System.Windows.Forms.Button btnAddBook;
