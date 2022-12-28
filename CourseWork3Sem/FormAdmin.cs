@@ -69,13 +69,20 @@ namespace CourseWork3Sem
                 return;
             }
 
+            if(txtPublicationHouse.Text.Length < 2)
+            {
+                MessageBox.Show("Некорректное поле \"Издательство\"");
+                return;
+            }
+
+
             filePath = DB.GetFileNameForAllBooks();
             DB.OpenOrCreatFile(filePath);
             Book newBook;
 
             try 
             {
-                newBook = new Book(txtBookName.Text, txtAuthor.Text);
+                newBook = new Book(txtBookName.Text, txtAuthor.Text, txtPublicationHouse.Text, dateTimePickerPublicationData.Text);
             }
             catch
             {

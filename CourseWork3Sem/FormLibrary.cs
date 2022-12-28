@@ -132,10 +132,14 @@ namespace CourseWork3Sem
                         DB.DeletFromDB<Debtor>(indexDebtor);
                         listBoxDebtorBooks.Items.Clear();
                     }
-
+                 //   string bookReturnDate = DateTime.Now.ToString("yyyy.MM.dd");
                     thisDebtor = new Debtor(thisReader, books);
                     DB.SaveToDB<Debtor>(thisDebtor);
 
+                    //for (int i = 0; i < thisDebtor.books.Count; i++)
+                    //{
+                    //    listBoxDebtorBooks.Items.Add(thisDebtor.books[i] + "'Вернуть книгу: " + bookReturnDate);
+                    //}
                     for (int i = 0; i < thisDebtor.books.Count; i++)
                     {
                         listBoxDebtorBooks.Items.Add(thisDebtor.books[i]);
@@ -151,8 +155,7 @@ namespace CourseWork3Sem
                     }
                 }
                 else
-                    MessageBox.Show("Невозможно выдать более 5 книг в одни руки");
-                //  listBoxBookList.ClearSelected();  
+                    MessageBox.Show("Невозможно выдать более 5 книг в одни руки"); 
             }
             else
                 MessageBox.Show("Вы ничего не выбрали");
@@ -176,7 +179,9 @@ namespace CourseWork3Sem
 
                 for (int x = listBoxDebtorBooks.SelectedIndices.Count; x > 0; x--)
                 {
+                   // string bookReturnDate = DateTime.Now.ToString("yyyy.MM.dd");
                     DB.SaveToDB<Book>(listBoxDebtorBooks.SelectedItem);
+                    //  listBoxBookList.Items.Add(listBoxDebtorBooks.SelectedItem + "Вернуть книгу: " + bookReturnDate);
                     listBoxBookList.Items.Add(listBoxDebtorBooks.SelectedItem);
 
                     listBoxDebtorBooks.Items.RemoveAt(listBoxDebtorBooks.SelectedIndex);

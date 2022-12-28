@@ -31,7 +31,7 @@ namespace CourseWork3Sem
         public bool DeletFromDB<T>(int id)
         {
             List<T> allCurrenObjects = ReadAllFromDB<T>();
-
+            allCurrenObjects.Sort();
             try
             {
                 allCurrenObjects.RemoveAt(id);

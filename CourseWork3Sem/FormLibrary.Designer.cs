@@ -50,12 +50,14 @@
             // listBoxBookList
             // 
             this.listBoxBookList.FormattingEnabled = true;
+            this.listBoxBookList.HorizontalScrollbar = true;
             this.listBoxBookList.ItemHeight = 16;
             this.listBoxBookList.Location = new System.Drawing.Point(27, 68);
             this.listBoxBookList.Name = "listBoxBookList";
             this.listBoxBookList.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.listBoxBookList.ScrollAlwaysVisible = true;
             this.listBoxBookList.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBoxBookList.Size = new System.Drawing.Size(256, 180);
+            this.listBoxBookList.Size = new System.Drawing.Size(323, 212);
             this.listBoxBookList.TabIndex = 1;
             // 
             // btnTakeBooks
@@ -71,12 +73,13 @@
             // listBoxDebtorBooks
             // 
             this.listBoxDebtorBooks.FormattingEnabled = true;
+            this.listBoxDebtorBooks.HorizontalScrollbar = true;
             this.listBoxDebtorBooks.ItemHeight = 16;
-            this.listBoxDebtorBooks.Location = new System.Drawing.Point(369, 68);
-            this.listBoxDebtorBooks.MultiColumn = true;
+            this.listBoxDebtorBooks.Location = new System.Drawing.Point(386, 68);
             this.listBoxDebtorBooks.Name = "listBoxDebtorBooks";
+            this.listBoxDebtorBooks.ScrollAlwaysVisible = true;
             this.listBoxDebtorBooks.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.listBoxDebtorBooks.Size = new System.Drawing.Size(256, 180);
+            this.listBoxDebtorBooks.Size = new System.Drawing.Size(350, 212);
             this.listBoxDebtorBooks.TabIndex = 3;
             // 
             // btnReturnBooks

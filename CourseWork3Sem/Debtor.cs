@@ -10,6 +10,7 @@ namespace CourseWork3Sem
     {
         public Reader reader { get; }
         public List<Book> books { get; }
+     
 
         public Debtor(Reader reader, List<Book> books)
         {
@@ -32,7 +33,7 @@ namespace CourseWork3Sem
                 str = ($"{reader.FullName}, {reader.PhoneNumber} - ");
             
             foreach (var book in books)
-                str += ($"{book.NameBook} ({book.Author}) \n");
+                str += ($"{book.NameBook} ({book.Author})\n");
 
             return str;
         }
