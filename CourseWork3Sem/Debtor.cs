@@ -33,7 +33,7 @@ namespace CourseWork3Sem
                 str = ($"{reader.FullName}, {reader.PhoneNumber} - ");
             
             foreach (var book in books)
-                str += ($"{book.NameBook} ({book.Author})\n");
+                str += ($"{book.NameBook} ({book.Author}), Издательство: {book.PublicationHouse}, Дата издания: {book.PublicationData}, Вернуть книгу до: {book.ReturningDate}, \n");
 
             return str;
         }

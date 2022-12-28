@@ -29,8 +29,10 @@ namespace CourseWork3Sem
             if(debtors.Count == 0)
                 listBoxDebtors.Items.Add("Нет должников");
             foreach (var debtor in debtors)
+            {
                 listBoxDebtors.Items.Add(debtor);
-
+            }    
+                
             filePath = DB.GetFileNameForAllBooks();
             DB.OpenOrCreatFile(filePath);
 
@@ -82,7 +84,7 @@ namespace CourseWork3Sem
 
             try 
             {
-                newBook = new Book(txtBookName.Text, txtAuthor.Text, txtPublicationHouse.Text, dateTimePickerPublicationData.Text);
+                newBook = new Book(txtBookName.Text, txtAuthor.Text, txtPublicationHouse.Text, dateTimePickerPublicationData.Text, "");
             }
             catch
             {

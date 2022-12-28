@@ -12,19 +12,30 @@ namespace CourseWork3Sem
         public string Author { get; private set; }
         public string PublicationData { get; private set; }
         public string PublicationHouse { get; private set; }
-    //    public string ReturningDate { get; private set; }
+        public string ReturningDate { get; set; }
+        private bool isHeld = false;
 
-        public Book(string nameBook, string author, string publicationHouse, string publicationData)
+        public Book(string nameBook, string author, string publicationHouse, string publicationData, string returningDate)
         {
             NameBook = nameBook;
             Author = author;
             PublicationHouse = publicationHouse;
             PublicationData = publicationData;
+            ReturningDate = returningDate;
+        }
+
+        public void IsHeld()
+        {
+            isHeld = true;
         }
 
         public override string ToString()
         {
-            return ($"{NameBook}, {Author}, Издательство: {PublicationHouse}, Дата издания: {PublicationData} ");
+            string str = "";
+            str = ($"{NameBook}, {Author}, Издательство: {PublicationHouse}, Дата издания: {PublicationData}");
+            if (isHeld == true)
+                str += ($", Вернуть книгу до: {ReturningDate}");
+            return str;
         }
 
         public int CompareTo(object obj)
@@ -34,22 +45,6 @@ namespace CourseWork3Sem
             else 
                 throw new ArgumentException("Некорректное значение параметра");
         }
-
-        /*
-           public void IsHeld(bool value)
-        {
-            isHeld = value;
-        }
-
-        public override string ToString()
-        {
-            string str = "";
-            str = ($"{NameBook}, {Author}, Издательство: {PublicationHouse}, Дата издания: {PublicationData}");
-            if (isHeld == true)
-                str += ($"Вернуть книгу: {ReturningDate}");
-            return str;
-        }
-         */
 
     }
 }

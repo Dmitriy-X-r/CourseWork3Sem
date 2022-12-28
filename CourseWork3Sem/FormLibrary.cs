@@ -47,6 +47,7 @@ namespace CourseWork3Sem
             {
                 for (int i = 0; i < thisDebtor.books.Count; i++)
                 {
+                    thisDebtor.books[i].IsHeld();
                     listBoxDebtorBooks.Items.Add(thisDebtor.books[i]);
                 }
             }
@@ -132,18 +133,22 @@ namespace CourseWork3Sem
                         DB.DeletFromDB<Debtor>(indexDebtor);
                         listBoxDebtorBooks.Items.Clear();
                     }
-                 //   string bookReturnDate = DateTime.Now.ToString("yyyy.MM.dd");
-                    thisDebtor = new Debtor(thisReader, books);
-                    DB.SaveToDB<Debtor>(thisDebtor);
+                    
+                    DateTime bookReturnDate = new DateTime();
+                    bookReturnDate = DateTime.Now.AddDays(14);
+                    string bookReturnDateToString = bookReturnDate.ToString();
+                    bookReturnDateToString = DateTime.Parse(bookReturnDateToString).ToShortDateString();
 
-                    //for (int i = 0; i < thisDebtor.books.Count; i++)
-                    //{
-                    //    listBoxDebtorBooks.Items.Add(thisDebtor.books[i] + "'Вернуть книгу: " + bookReturnDate);
-                    //}
+                    thisDebtor = new Debtor(thisReader, books);
+
                     for (int i = 0; i < thisDebtor.books.Count; i++)
                     {
+                        thisDebtor.books[i].IsHeld();
+                        thisDebtor.books[i].ReturningDate = bookReturnDateToString;
                         listBoxDebtorBooks.Items.Add(thisDebtor.books[i]);
                     }
+
+                    DB.SaveToDB<Debtor>(thisDebtor);
 
                     string fileNameForBooks = DB.GetFileNameForAvailableBooks();
                     DB.OpenOrCreatFile(fileNameForBooks);
@@ -179,9 +184,7 @@ namespace CourseWork3Sem
 
                 for (int x = listBoxDebtorBooks.SelectedIndices.Count; x > 0; x--)
                 {
-                   // string bookReturnDate = DateTime.Now.ToString("yyyy.MM.dd");
                     DB.SaveToDB<Book>(listBoxDebtorBooks.SelectedItem);
-                    //  listBoxBookList.Items.Add(listBoxDebtorBooks.SelectedItem + "Вернуть книгу: " + bookReturnDate);
                     listBoxBookList.Items.Add(listBoxDebtorBooks.SelectedItem);
 
                     listBoxDebtorBooks.Items.RemoveAt(listBoxDebtorBooks.SelectedIndex);
